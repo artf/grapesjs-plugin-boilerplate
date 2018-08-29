@@ -60,7 +60,7 @@ This boilerplate helps you quickly start a production ready plugin for GrapesJS.
 
 ## Usage
 
-Directly in browser
+Directly in the browser
 ```html
 <link href="https://unpkg.com/grapesjs/dist/css/grapes.min.css" rel="stylesheet"/>
 <script src="https://unpkg.com/grapesjs"></script>
