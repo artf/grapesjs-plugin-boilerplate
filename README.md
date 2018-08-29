@@ -3,17 +3,18 @@
 
 <span><a href="https://david-dm.org/artf/grapesjs-plugin-boilerplate#info=devDependencies" title="View the status of this project's development dependencies on DavidDM"><img src="https://img.shields.io/david/dev/artf/grapesjs-plugin-boilerplate.svg" alt="Dev Dependency Status" /></a></span>
 
-This boilerplate helps you quickly start a production ready plugin for GrapesJS. If you don't know from where to start, check this guide [Creating plugins](https://grapesjs.com/docs/modules/Plugins.html). Sections below are also used as boilerplate for your README, follow these steps
+This boilerplate helps you quickly start a production ready plugin for GrapesJS. If you don't know from where to start, check this guide [Creating plugins](https://grapesjs.com/docs/modules/Plugins.html). Sections below are also used as boilerplate for your README, follow these steps below
 
 ### Usage
 1. Clone this repository `git clone https://github.com/artf/grapesjs-plugin-boilerplate.git YOUR-PLUGIN-NAME`
-1. Replace in all files `YOUR-PLUGIN-NAME` with your plugin name
-1. Update `package.json`
+1. Replace in all files `YOUR-PLUGIN-NAME` and `grapesjs-plugin-boilerplate` with your plugin name.
+  **The name of your plugin depends on the `name` key in your `package.json`**
+1. Update all the data in `package.json`
 1. Install dependencies `npm i` and run the local server `npm start`
 1. Start creating your plugin from `src/index.js`
 1. Show some gif/demo if possible
 1. Update README
-1. When you're ready update the production file `npm run build`
+1. When you're ready, build your source with `npm run build`
 1. Publish
 
 
@@ -59,6 +60,7 @@ This boilerplate helps you quickly start a production ready plugin for GrapesJS.
 
 ## Usage
 
+Directly in browser
 ```html
 <link href="https://unpkg.com/grapesjs/dist/css/grapes.min.css" rel="stylesheet"/>
 <script src="https://unpkg.com/grapesjs"></script>
@@ -69,15 +71,32 @@ This boilerplate helps you quickly start a production ready plugin for GrapesJS.
 <script type="text/javascript">
   var editor = grapesjs.init({
       container : '#gjs',
-      ...
+      // ...
       plugins: ['YOUR-PLUGIN-NAME'],
       pluginsOpts: {
-        'YOUR-PLUGIN-NAME': {
-          // options
-        }
+        'YOUR-PLUGIN-NAME': { /* options */ }
       }
   });
 </script>
+```
+
+Modern javascript
+```js
+import grapesjs from 'grapesjs';
+import yourPluginName from 'YOUR-PLUGIN-NAME';
+
+const editor = grapesjs.init({
+  container : '#gjs',
+  // ...
+  plugins: [yourPluginName],
+  pluginsOpts: {
+    [yourPluginName]: { /* options */ }
+  }
+  // or
+  plugins: [
+    editor => yourPluginName(editor, { /* options */ }),
+  ],
+});
 ```
 
 
@@ -97,12 +116,6 @@ Install dependencies
 
 ```sh
 $ npm i
-```
-
-The plugin relies on GrapesJS via `peerDependencies` so you have to install it manually (without adding it to package.json)
-
-```sh
-$ npm i grapesjs --no-save
 ```
 
 Start the dev server
