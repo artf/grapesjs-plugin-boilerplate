@@ -37,6 +37,7 @@ module.exports = (env = {}) => {
           test: /\.js$/,
           loader: 'babel-loader',
           include: /src/,
+          options: { cacheDirectory: true },
       }],
     },
     externals: {'grapesjs': 'grapesjs'},
