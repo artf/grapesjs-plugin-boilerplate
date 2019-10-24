@@ -1,3 +1,5 @@
+> We highly suggest to start using https://github.com/artf/grapesjs-cli for your new plugin projects
+
 # GrapesJS Plugin Boilerplate
 
 
